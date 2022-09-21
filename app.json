@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "truverify",
+    "slug": "truverify",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/tru.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/tru.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/tru.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.gidd14.FixCode"
+    },
+    "web": {
+      "favicon": "./assets/tru.png"
+    }
+  }
+}
