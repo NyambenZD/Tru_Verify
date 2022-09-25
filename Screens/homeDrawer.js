@@ -26,7 +26,7 @@ function HomeDrawer() {
         options={{
           title: "Home",
           headerStyle: {
-            backgroundColor: 'wheat',
+            backgroundColor: '#3e92d1',
           }
         }}
 
@@ -36,7 +36,7 @@ function HomeDrawer() {
         options={{
           title: "User Profile",
           headerStyle: {
-            backgroundColor: 'wheat',
+            backgroundColor: '#3e92d1',
           }
         }}
         name="userProfile" component={userProfile} />
@@ -44,7 +44,7 @@ function HomeDrawer() {
         options={{
           title: "LogOut",
           headerStyle: {
-            backgroundColor: 'wheat',
+            backgroundColor: '#3e92d1',
           }
         }}
         name="LogOut" component={LogOut} />
@@ -54,7 +54,7 @@ function HomeDrawer() {
         options={{
           title: "",
           headerStyle: {
-            backgroundColor: 'wheat',
+            backgroundColor: '#3e92d1',
           }
         }}
         name="Profile" component={Profile} />
@@ -65,7 +65,7 @@ function HomeDrawer() {
         options={{
           title: "",
           headerStyle: {
-            backgroundColor: 'wheat',
+            backgroundColor: '#3e92d1',
           }
 
         }}
@@ -79,7 +79,7 @@ function HomeDrawer() {
         options={{
           title: "",
           headerStyle: {
-            backgroundColor: 'wheat',
+            backgroundColor: '#3e92d1',
           }
 
         }}
@@ -90,7 +90,7 @@ function HomeDrawer() {
         options={{
           title: "",
           headerStyle: {
-            backgroundColor: 'wheat',
+            backgroundColor: '#3e92d1',
           }
 
         }}
@@ -100,7 +100,7 @@ function HomeDrawer() {
         options={{
           title: "",
           headerStyle: {
-            backgroundColor: 'wheat',
+            backgroundColor: '#3e92d1',
           }
 
         }}
@@ -110,7 +110,7 @@ function HomeDrawer() {
         options={{
           title: "",
           headerStyle: {
-            backgroundColor: 'wheat',
+            backgroundColor: '#3e92d1',
           }
         }}
         name="MyWeb" component={MyWeb} />
@@ -119,7 +119,7 @@ function HomeDrawer() {
         options={{
           title: "",
           headerStyle: {
-            backgroundColor: 'wheat',
+            backgroundColor: '#3e92d1',
           }
         }}
         name="other" component={other} />

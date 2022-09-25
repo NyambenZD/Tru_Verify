@@ -24,6 +24,9 @@ import { Button, Center } from "native-base";
 import Scanner from "./Scan";
 import FacialCamera from "./facialcamera";
 import * as Animatable from "react-native-animatable";
+//navigation to back page import
+// import {Link, Routes, Route, useNavigate} from 'react-router-dom';
+
 //import { CreateStackNavigation } from 'react-navigation-stack';
 
 //firebase config
@@ -64,6 +67,10 @@ export const getContractor2 = async (batchid) => {
 };
 
 export default function Validated({ navigation }) {
+
+  //back button navigation to previous page function
+  // const navigate = useNavigate();
+
   const [batchid, setBatchID] = React.useState({});
   const [scan, setScan] = React.useState(false);
   const [contractor, setContractor] = React.useState({});
@@ -188,7 +195,7 @@ export default function Validated({ navigation }) {
         <View style={styles.container}>
           <Text
             style={{
-              color: "white",
+              color: "#3e92d1",
               fontSize: 30,
               fontWeight: "900",
               justifyContent: "center",
@@ -196,7 +203,7 @@ export default function Validated({ navigation }) {
               left: 55,
             }}
           >
-            Verify contractors
+             Verify contractors
           </Text>
           {/* content container with color light greyish #e6e6e6 */}
           <View
@@ -240,6 +247,7 @@ export default function Validated({ navigation }) {
             >
               Verify
             </Button>
+
             <Button
               style={{
                 backgroundColor: "#FED000",

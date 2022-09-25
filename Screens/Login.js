@@ -46,7 +46,7 @@ const SignInScreen = ({ navigation }) => {
           alert("account not found!");
         } else {
           SETUSER( prev => prev = user);
-          alert("welcome");
+          // alert("welcome");
          
         }
       });

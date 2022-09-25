@@ -66,7 +66,7 @@ const SignUpScreen = ({ navigation }) => {
       
       >
       <View style={styles.header}>
-        <Text style={styles.text_header}>Sign up with us</Text>
+        <Text style={styles.text_header}>Register an account</Text>
       </View>
       <View style={styles.footer}>
         <ScrollView>
@@ -142,7 +142,7 @@ export default SignUpScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#FAF8FF",
   },
 
   header: {
@@ -153,7 +153,8 @@ const styles = StyleSheet.create({
   },
   
   text_header: {
-    color: "black",
+    // color: "black",
+    color: "#3e92d1",
     fontWeight: "bold",
     fontSize: 30,
     marginTop: -50,
@@ -181,7 +182,7 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === "ios" ? 0 : -12,
     paddingLeft: 10,
     color: "#05375a",
-    fontSize: 15
+        fontSize: 15
     
   },
   button: {
@@ -198,7 +199,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
     marginLeft:30,
     marginBottom: 10,
-    backgroundColor: "black",
+    backgroundColor: "#FED000",
     
   },
   textSign: {

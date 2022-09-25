@@ -10,9 +10,6 @@ export default function FacialCamera() {
 //   const [camera, setCamera] = useState(null);
   const camera = useRef(null);
 
-    //   if (!permission) ... 
-    //   if (!permission.granted) ... 
-
   function toggleCameraType() {
     setType((current) => (
       current === CameraType.back ? CameraType.front : CameraType.back
