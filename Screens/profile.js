@@ -1,11 +1,11 @@
 import * as React from "react";
-import { View, Image,Text, button, 
-  TextInput, 
-  StyleSheet,  
+import { View, Image,Text, button, TextInput, StyleSheet,
   ScrollView,
-  SafeAreaView, 
-} from "react-native";
+  SafeAreaView, Dimensions} from "react-native";
 import { Avatar } from 'react-native-paper';
+
+const height_ = Dimensions.get("screen").height;
+const width_ = Dimensions.get("screen").width;
 export default function DetailsScreen({ navigation, route }) {
   const [data, setData] = React.useState();
 
@@ -17,12 +17,17 @@ export default function DetailsScreen({ navigation, route }) {
   }, [data]);
 
   return (
-    <View style={styles.veiw}>
-      <View
+    <SafeAreaView style={{ flex: 1, height: height_ , backgroundColor: "#e6e6e6",}}>
+      <ScrollView
+        nestedScrollEnabled={true}
+        showsVerticalScrollIndicator={false}
+      >
+    <View >
+      {/* <View
         style={{
-          height: "42.5%",
+          height: height_ * 0.3,
           width: "100%",
-          backgroundColor: "#3e92d1",
+          backgroundColor: "red", //top
           // opacity: "100%",
           // borderBottomLeftRadius: "90%",
           // borderBottomRightRadius: "90%",
@@ -43,7 +48,7 @@ export default function DetailsScreen({ navigation, route }) {
         >
           Verify contractors
         </Text>
-      </View>
+      </View> */}
       <Text
         onPress={() => navigation.navigate("Home")}
         style={{
@@ -67,9 +72,9 @@ export default function DetailsScreen({ navigation, route }) {
             {/* image avater */}
             {/* <Avatar.Image size={24} source={require('../assets/avatar.png')} /> */}
 
-      <TextInput style={styles.topDiv} value="" />
+      {/* <TextInput style={styles.topDiv} value="" /> */}
 
-      <TextInput style={styles.profImg} />
+      {/* <TextInput style={styles.profImg} /> */}
 
       
       {/* <TextInput
@@ -99,6 +104,8 @@ export default function DetailsScreen({ navigation, route }) {
       />
 
     </View>
+    </ScrollView>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
@@ -107,10 +114,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 50,
+    height: "green",
+    // paddingTop: 50,
   },
   textBoxes: {
-    width: "90%",
+    // width: "90%",
+    width: width_ * 0.99,
     fontSize: 18,
     padding: 12,
     borderColor: "goldenrod",
@@ -122,33 +131,35 @@ const styles = StyleSheet.create({
     fontSize: 20,
       borderWidth: 1.2,
       borderRadius: 13,
+      alignItems: "center"
   },
-  profImg: {
-    height: 190,
-    width: "60%",
-    backgroundColor: "seashell",
-    borderColor: "#FED000",
-    borderWidth: 1,
-    position: "relative",
-    left: 5,
-    borderRadius: 500,
-    marginTop: -490,
-    // position: 'relative',
-    marginBottom: 25,
-  },
-  veiw: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#e6e6e6"
-  },
-  topDiv: {
-    height: 390,
-    width: "100%",
-    // backgroundColor: '#fff',
-    // backgroundColor: 'rgba(3, 0, 111, 0.8)',
-    // borderWidth: 1,
-    position: "relative",
-    top: 0,
-  },
+ 
+  // profImg: {
+  //   height: 190,
+  //   width: "60%",
+  //   backgroundColor: "seashell",
+  //   borderColor: "#FED000",
+  //   borderWidth: 1,
+  //   position: "relative",
+  //   left: 5,
+  //   borderRadius: 500,
+  //   marginTop: -490,
+  //   // position: 'relative',
+  //   marginBottom: 25,
+  // },
+  // veiw: {
+  //   flex: 1,
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  //   backgroundColor: "#e6e6e6"
+  // },
+  // topDiv: {
+  //   height: height_ * 0.99,
+  //   width: "100%",
+  //   // backgroundColor: '#fff',
+  //   // backgroundColor: 'rgba(3, 0, 111, 0.8)',
+  //   // borderWidth: 1,
+  //   position: "relative",
+  //   top: 0,
+  // },
 });
