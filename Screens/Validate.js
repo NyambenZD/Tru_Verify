@@ -160,7 +160,10 @@ export default function Validated({ navigation }) {
 
   function openCamera() {
     setFacialCam(!facialcam);
+    //
   }
+
+
 
   const checkPic = async () => {
     var myHeaders = new Headers();
