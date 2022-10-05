@@ -1,12 +1,15 @@
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import { StyleSheet, Text, View, Button, TextInput, Dimensions } from "react-native";
 import React, { useState, useEffect } from "react";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { WebView } from "react-native-webview";
 
+const height_ = Dimensions.get("screen").height;
+const width_ = Dimensions.get("screen").width;
+
 function Scanner({ state, setState }) {
   const [hasPermission, setHaPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
-  const [text, setText] = useState("Not Scanned");
+  const [text, setText] = useState("");
 
   const askForCameraPermission = () => {
     (async () => {
@@ -65,7 +68,7 @@ function Scanner({ state, setState }) {
       <View style={styles.barcodebox}>
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-          style={{ height: 400, width: 400 }}
+          style={{ height: height_ * 0.45, width: width_ }}
         />
       </View>
 
@@ -73,9 +76,10 @@ function Scanner({ state, setState }) {
 
       {scanned && (
         <Button
-          title={"Scan again"}
+          title={"Tap to Scan Again"}
+          // title={"Scan again"}
           onPress={() => {
-            setScanned(false), setText("Not Scanned");
+            setScanned(false), setText("");
           }}
           color="tomato"
         />
@@ -91,7 +95,7 @@ export default Scanner;
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#ecf4fa",
     alignItems: "center",
     justifyContent: "center",
     opacity: 0.99,
@@ -99,18 +103,22 @@ const styles = StyleSheet.create({
   },
 
   barcodebox: {
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    height: 410,
-    width: 300,
+    height: height_ * 0.3,
+    width: width_ * 0.75,
     overflow: "hidden",
     borderRadius: 30,
-    backgroundColor: "#FED000",
+    margin: height_ * 0.05,
+
   },
 
   maintext: {
     fontSize: 16,
-    margin: 20,
+    // margin: height_ * 0.01,
+    textAlign: "center",
+    color: "#3e92d1",
+    fontWeight: "bold",
   },
 });

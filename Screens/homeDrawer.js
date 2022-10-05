@@ -25,6 +25,8 @@ function HomeDrawer() {
       <Drawer.Screen
         options={{
           title: "Home",
+          color: "white",
+          headerTintColor: 'white',
           headerStyle: {
             backgroundColor: '#3e92d1',
           }
@@ -35,6 +37,8 @@ function HomeDrawer() {
          <Drawer.Screen
         options={{
           title: "User Profile",
+          color: "white",
+          headerTintColor: 'white',
           headerStyle: {
             backgroundColor: '#3e92d1',
           }
@@ -43,6 +47,8 @@ function HomeDrawer() {
         <Drawer.Screen
         options={{
           title: "LogOut",
+          color: "white",
+          headerTintColor: 'white',
           headerStyle: {
             backgroundColor: '#3e92d1',
           }
@@ -53,6 +59,8 @@ function HomeDrawer() {
       <Drawer.Screen
         options={{
           title: "",
+          color: "white",
+          headerTintColor: 'white',
           headerStyle: {
             backgroundColor: '#3e92d1',
           }
@@ -64,6 +72,8 @@ function HomeDrawer() {
       <Drawer.Screen
         options={{
           title: "",
+          color: "white",
+          headerTintColor: 'white',
           headerStyle: {
             backgroundColor: '#3e92d1',
           }
@@ -78,6 +88,8 @@ function HomeDrawer() {
       <Drawer.Screen
         options={{
           title: "",
+          color: "white",
+          headerTintColor: 'white',
           headerStyle: {
             backgroundColor: '#3e92d1',
           }
@@ -89,6 +101,8 @@ function HomeDrawer() {
       <Drawer.Screen
         options={{
           title: "",
+          color: "white",
+          headerTintColor: 'white',
           headerStyle: {
             backgroundColor: '#3e92d1',
           }
@@ -99,6 +113,8 @@ function HomeDrawer() {
       <Drawer.Screen
         options={{
           title: "",
+          color: "white",
+          headerTintColor: 'white',
           headerStyle: {
             backgroundColor: '#3e92d1',
           }
@@ -109,6 +125,8 @@ function HomeDrawer() {
         <Drawer.Screen
         options={{
           title: "",
+          color: "white",
+          headerTintColor: 'white',
           headerStyle: {
             backgroundColor: '#3e92d1',
           }
@@ -118,6 +136,8 @@ function HomeDrawer() {
 <Drawer.Screen
         options={{
           title: "",
+          color: "white",
+          headerTintColor: 'white',
           headerStyle: {
             backgroundColor: '#3e92d1',
           }
@@ -130,7 +150,9 @@ function HomeDrawer() {
 
       <Drawer.Screen
         options={{
-          title: ""
+          title: "",
+          color: "white",
+          headerTintColor: 'white',
         }}
         name="Settings" component={Settings} />
 

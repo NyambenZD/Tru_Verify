@@ -1,6 +1,8 @@
 import * as React from "react";
 import { initializeApp } from "firebase/app";
-import { Camera, CameraType } from 'expo-camera';
+import { Camera, CameraType } from "expo-camera";
+import * as ImagePicker from "expo-image-picker";
+
 import {
   View,
   Text,
@@ -12,6 +14,8 @@ import {
   SafeAreaView,
   Dimensions,
   Platform,
+  Image,
+  Avatar,
 } from "react-native";
 import {
   getFirestore,
@@ -22,10 +26,13 @@ import {
 } from "firebase/firestore";
 import { Button, Center } from "native-base";
 import Scanner from "./Scan";
-import FacialCamera from "./facialcamera";
+import {getStorage, ref} from "firebase/storage";
+// import FacialCamera from "./facialcamera";
 import * as Animatable from "react-native-animatable";
 //navigation to back page import
 // import {Link, Routes, Route, useNavigate} from 'react-router-dom';
+
+//
 
 //import { CreateStackNavigation } from 'react-navigation-stack';
 
@@ -40,6 +47,7 @@ const firebaseConfig = {
   measurementId: "G-H1TVQ31611",
 };
 
+
 //initialize firebase
 initializeApp(firebaseConfig);
 
@@ -51,8 +59,9 @@ export const getContractor2 = async (batchid) => {
   //collection ref
   const colRef = collection(db, "contractors");
 
-  //query the collection
+  //query the collection 
   const q = query(colRef, where("batchid", "==", batchid));
+
   var contractors = [];
 
   await onSnapshot(q, (snapshot) => {
@@ -67,7 +76,6 @@ export const getContractor2 = async (batchid) => {
 };
 
 export default function Validated({ navigation }) {
-
   //back button navigation to previous page function
   // const navigate = useNavigate();
 
@@ -112,8 +120,7 @@ export default function Validated({ navigation }) {
       //     "CALL THE POLICE OR EMERGENCY CONTACT!"
       //   );
       Alert.alert(
-        "Batch ID does not match",
-        "CALL THE POLICE OR EMERGENCY CONTACT!"
+        "Does not match, call"
       );
     }
   };
@@ -163,30 +170,47 @@ export default function Validated({ navigation }) {
     //
   }
 
-
-
-  const checkPic = async () => {
+  const checkPic = async ( right, left) => {
     var myHeaders = new Headers();
+    
     myHeaders.append("Content-Type", "text/plain");
 
     var raw = {
-      left: "",
-      right: "",
+      left: left,
+      right: right,
       api_key: "smuurt_5ece4797eaf5e",
     };
 
     var requestOptions = {
-      method: "GET",
+      method: "POST",
       headers: myHeaders,
       body: raw,
       redirect: "follow",
     };
 
     await fetch("http://138.128.244.103:90/smuurt-face-compare", requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      })
       .catch((error) => console.log("error", error));
   };
+
+ 
+  // TRY 1
+  const openImagePickerAsync = async () => {
+    // taking a photo from camera roll
+    let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+
+    let pickerResult = await ImagePicker.launchCameraAsync({ allowsEditing: true, base64:true, aspect: [4, 3] })
+
+    let img64 = pickerResult.base64;
+    console.log( img64 );
+
+    checkPic( img64, img64 );
+   }
+  // TRY 1 
+
 
   return (
     //main container with color blue #3e92d1
@@ -200,24 +224,19 @@ export default function Validated({ navigation }) {
             style={{
               color: "#3e92d1",
               fontSize: 30,
-              fontWeight: "900",
-              justifyContent: "center",
-              // top: 90,
-              left: 55,
+              fontWeight: "700",
+              textAlign: "center",
+              top: height_ * 0.03,
             }}
           >
-             Verify contractors
+            Verify contractors
           </Text>
           {/* content container with color light greyish #e6e6e6 */}
           <View
             justifyContent={"center"}
             width={"100%"}
             alignItems={"center"}
-            // marginTop={"40%"}
-            // height={"450%"}
-            // borderTopLeftRadius={"65%"}
-            // borderTopRightRadius={"65%"}r
-            // backgroundColor="red"
+      
           >
             <TextInput
               name="batchid"
@@ -244,11 +263,12 @@ export default function Validated({ navigation }) {
                 width: "80%",
                 // bottom: 800,
                 borderRadius: 50,
+                top: height_ * 0.05,
               }}
               marginY={5}
               onPress={() => verification()}
             >
-              Verify
+              <Text style={styles.buttonText}>Validate </Text>
             </Button>
 
             <Button
@@ -257,6 +277,7 @@ export default function Validated({ navigation }) {
                 width: "80%",
                 // bottom: 800,
                 borderRadius: 50,
+                top: height_ * 0.015,
               }}
               marginY={5}
               onPress={
@@ -264,10 +285,10 @@ export default function Validated({ navigation }) {
                 //Alert.alert("Allow permission for the camera to open")
               }
             >
-              QR Scanner
+              <Text style={styles.buttonText}>QR Scanner</Text>
             </Button>
 
-            <Button
+            {/* <Button
               style={{
                 backgroundColor: "#FED000",
                 width: "80%",
@@ -281,13 +302,39 @@ export default function Validated({ navigation }) {
               }
             >
               Camera
-            </Button>
+            </Button> */}
+
+          <Button
+            onPress={openImagePickerAsync}
+            style={{
+              backgroundColor: "#FED000",
+              width: "80%",
+              // bottom: 800,
+              borderRadius: 50,
+              top: height_ * 0.00015,
+            }}
+          >
+            <Text style={styles.buttonText}>Open camera</Text>
+          </Button>
 
           </View>
           <Scanner state={scan} setState={setScan} />
-          <FacialCamera state={facialcam} setState={setFacialCam} />
+          {/* <FacialCamera state={facialcam} setState={setFacialCam} /> */}
           <View style={styles.footer}></View>
 
+          {/*  TRY 1 | CAMERA */}
+          <Image
+            source={{ uri: "https://i.imgur.com/TkIrScD.png" }}
+            style={styles.logo}
+          />
+{/*        
+          <TouchableOpacity
+            onPress={openImagePickerAsync}
+            style={styles.button}
+          >
+            <Text style={styles.buttonText}>Open camera</Text>
+          </TouchableOpacity> */}
+          {/*  TRY 1 | CAMERA */}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -305,6 +352,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     margin: 15,
     borderRadius: 20,
+    top: height_ * 0.05,
   },
   buttonSearch: {
     height: 100,
@@ -315,4 +363,17 @@ const styles = StyleSheet.create({
     top: 25,
     borderRadius: 10,
   },
+  buttonText: {
+    fontSize: 16,
+    color: "#fff",
+    textAlign: "center",
+  },
+  button: {
+    backgroundColor: "#e6e6e6",
+    borderRadius: 10,
+    width: width_  * 1,
+    height: height_  * 0.06,
+    justifyContent: "center",
+    alignItems: "center",
+    },
 });
