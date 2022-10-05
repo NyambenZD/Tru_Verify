@@ -62,6 +62,7 @@ export const getContractor2 = async (batchid) => {
   //query the collection 
   const q = query(colRef, where("batchid", "==", batchid));
 
+
   var contractors = [];
 
   await onSnapshot(q, (snapshot) => {
