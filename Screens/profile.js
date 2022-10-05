@@ -1,5 +1,10 @@
 import * as React from "react";
-import { View, Image,Text, button, TextInput, StyleSheet } from "react-native";
+import { View, Image,Text, button, 
+  TextInput, 
+  StyleSheet,  
+  ScrollView,
+  SafeAreaView, 
+} from "react-native";
 import { Avatar } from 'react-native-paper';
 export default function DetailsScreen({ navigation, route }) {
   const [data, setData] = React.useState();
@@ -67,11 +72,11 @@ export default function DetailsScreen({ navigation, route }) {
       <TextInput style={styles.profImg} />
 
       
-      <TextInput
+      {/* <TextInput
         value={data?.surname}
         placeholder="Surname"
         style={styles.textBoxes}
-      />
+      /> */}
       <TextInput
         value={data?.fullname}
         placeholder="Names"
