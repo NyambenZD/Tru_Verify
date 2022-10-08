@@ -2,7 +2,7 @@ import * as React from "react";
 import { initializeApp } from "firebase/app";
 import { Camera, CameraType } from "expo-camera";
 import * as ImagePicker from "expo-image-picker";
-
+// import EmergencyCall from "../components/EmergencyCall";
 import {
   View,
   Text,
@@ -85,6 +85,28 @@ export default function Validated({ navigation }) {
   const [contractor, setContractor] = React.useState({});
   const [facialcam, setFacialCam] = React.useState({});
 
+  // //function to verify batch id and get contractor details from firebase db and firebase storage and displat to profile page
+  // const verifi = async () => {
+  //   // check if the batch is equal to the confirm batch id
+  //   if (batchid["batchid"] === batchid["batchidConfirm"]) {
+  //    //get contractor details from firebase firestore db
+  //     const contractors = await getContractor2(batchid["batchid"]);
+  //     //get contractor details from firebase storage
+  //     const storageRef = ref(storage, contractors[0].image);
+  //     //display contractor details to profile page
+  //     navigation.navigate("Profile", {
+  //       contractor: contractors[0],
+  //       storageRef: storageRef,
+  //     });
+  //   } else {
+  //     //if batch id is not equal to confirm batch id display emergency page and alert user
+  //     navigation.navigate("Emergency");
+  //     Alert.alert("Batch ID does not match, call the police");
+  //   }
+  // };
+
+
+
   const verification = () => {
     if (batchid["batchid"] === batchid["batchidConfirm"]) {
       const getContractor = async (batchid) => {
@@ -104,7 +126,9 @@ export default function Validated({ navigation }) {
             navigation.navigate("Profile", { contractor: contractors[0] });
           } else {
             // console.log('No contractor found');
-            Alert.alert("No Contractor Found");
+            Alert.alert("No Contractor Found", navigation.navigate("Home"));
+            //navigate to emergency call page if no contractor found in database with an alert 
+            // navigation.navigate("EmergencyCall");
           }
 
           // setContractor(contractors);
@@ -129,13 +153,6 @@ export default function Validated({ navigation }) {
   const verify = async () => {
     // check if the batch is equal to the confirm batch id
     if (batchid["batchid"] === batchid["batchidConfirm"]) {
-      // console.log(batchid['batchid']);
-
-      // .then(res => {
-      //     console.log(res);
-      //     let id = res;
-      //     navigation.navigate('Profile', { id: id });
-      // })
       const getContractor = async (batchid) => {
         //collection ref
         const colRef = collection(db, "contractors");

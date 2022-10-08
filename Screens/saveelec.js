@@ -66,7 +66,8 @@ const PowerSave = ({ state, setState }) => {
         <Card style={styles.Card}>
           <Card.Title title="Lights"></Card.Title>
           {result("lights")}
-          <Text>{'\n'}</Text>
+          
+          <Text style={styles.elecApi}>{'\n'}</Text>
         </Card>
 
         <Card style={styles.Card}>
@@ -131,6 +132,11 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     borderRadius: 20,
     borderBottomEndRadius: 20,
-    backgroundColor: "#ffa500",
+    backgroundColor: "#ecf4fa",
   },
+  elecApi: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
 });

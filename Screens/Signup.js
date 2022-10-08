@@ -65,9 +65,11 @@ const SignUpScreen = ({ navigation }) => {
       style={{flex: 1}}
       
       >
-      <View style={styles.header}>
+      
+      {/* <View style={styles.header}>
         <Text style={styles.text_header}>Register an account</Text>
-      </View>
+      </View> */}
+      <View style={styles.animateView}>
       <View style={styles.footer}>
         <ScrollView>
           <Text style={styles.text_footer}>Username</Text>
@@ -118,7 +120,7 @@ const SignUpScreen = ({ navigation }) => {
               onPress={() => navigation.navigate("signin") }
               style={[styles.signIn]}
             >
-              <Text style={[styles.textSign]}>Back</Text>
+              <Text style={[styles.textSign]}>Sign In</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.textPrivate}>
@@ -132,6 +134,7 @@ const SignUpScreen = ({ navigation }) => {
           </View>
         </ScrollView>
       </View>
+      </View>
       </ImageBackground>
     </Animatable.View>
   );
@@ -142,7 +145,7 @@ export default SignUpScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FAF8FF",
+    backgroundColor: "#ecf4fa",
   },
 
   header: {
@@ -194,7 +197,7 @@ const styles = StyleSheet.create({
     height: height_ * 0.055,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 10,
+    borderRadius: 20,
     //button size
     marginRight: 30,
     marginLeft:30,
@@ -233,4 +236,36 @@ const styles = StyleSheet.create({
     width: 20, 
     height: 20,
   },
+  animateView:{
+    height: height_ * 0.5,
+    top: height_ * 0.15,
+    borderRadius:50,
+    width: width_ * 0.98,
+    left: width_ * 0.01,
+    animateView: {
+      height: height_ * 0.5,
+      top: height_ * 0.15,
+      borderRadius:50,
+      width: width_ * 0.98,
+      left: width_ * 0.01,
+    },
+    // shadow
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 9,
+  },
+  footer: {
+    flex: 3,
+    backgroundColor: "#fff",
+    borderRadius: 30,
+    paddingVertical: 50,
+    paddingHorizontal: 30,
+    borderColor: "lightblue",
+    borderWidth: 2,
+  }
 });

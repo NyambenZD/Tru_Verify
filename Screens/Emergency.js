@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, Linking, Platform, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, View, Linking, Platform, TouchableOpacity,Dimensions } from 'react-native';
 
+
+const height_ = Dimensions.get("screen").height;
+const width_ = Dimensions.get("screen").width;
 
 export default class EmergencyCall extends Component {
 
@@ -36,15 +39,26 @@ const styles = StyleSheet.create(
       alignItems: 'center',
       margin: 20
     },
-    touchableButton: {
-      width: '80%',
-      padding: 10,
-      backgroundColor: 'red',
-    },
     TextStyle: {
       color: '#fff',
       fontSize: 18,
       textAlign: 'center',
+      fontWeight: 'bold'
+    },
+    touchableButton: {
+      // make button a circle with animation
+      width: width_ / 1.5,
+      height: width_ / 1.5,
+      borderRadius: width_ / 2,
+      backgroundColor: 'red',
+      justifyContent: 'center',
+      alignItems: 'center',
+      // shadow
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.5,
+      shadowRadius: 2,
+      elevation: 5,
     }
 
   });

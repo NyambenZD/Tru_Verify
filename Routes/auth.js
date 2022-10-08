@@ -15,7 +15,16 @@ function MyStack() {
         }}  
         component={ SplashScreen } />
       <Stack.Screen name="signin" component={ SignInScreen } />
-      <Stack.Screen name="signup" component={ SignUpScreen } />
+      <Stack.Screen name="signup" 
+      options={{
+        title: "Home",
+        color: "white",
+        headerTintColor: 'white',
+        headerStyle: {
+          backgroundColor: '#3e92d1',
+        }
+      }}
+      component={ SignUpScreen } />
     </Stack.Navigator>
   );
 }

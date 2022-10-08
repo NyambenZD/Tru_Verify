@@ -8,10 +8,16 @@ import {
   TouchableOpacity,
   Keyboard,
   ScrollView,
+  Dimensions,
+  
 } from "react-native";
 import { Appbar, Button, Chip, Card, Text, Title } from "react-native-paper";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import Post from "../Screens/post";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
+const width_ = Dimensions.get("screen").width;
+const height_ = Dimensions.get("screen").height;
 
 export default function Comments() {
   const [date, setDate] = useState(null);
@@ -66,20 +72,28 @@ export default function Comments() {
 
   console.log(postInputs);
   return (
+
+    
     <View style={styles.container}>
       {/* Added this scroll view to enable scrolling when list gets longer than the page */}
 
-      <ScrollView
+      {/* <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
         }}
         keyboardShouldPersistTaps="handled"
-      >
+      > */}
         <Appbar.Header style={styles.headbar}>
           <Appbar.Content title="Feedback Comments" />
         </Appbar.Header>
         <View style={styles.tasksWrapper}>
-          <Text>Share your feedback with us!!</Text>
+          {/* <Text>Share your feedback with us!!</Text> */}
+          {/*scrollview  */}
+          <ScrollView  contentContainerStyle={{
+          flexGrow: 1,
+        }}
+        keyboardShouldPersistTaps="handled"
+      >
           <Text>
             We would like to know how we can improve our App for you to have a
             more secured validating tool in your hand all the time.
@@ -90,10 +104,14 @@ export default function Comments() {
               <Post postdate={date} posttext={item.feedback} key={I} />
             ))}
           </View>
+          </ScrollView>
         </View>
 
+        
         {/* Users comments goes here */}
-        <View style={styles.addbox}>
+        
+        <View style={styles.footer}>
+          <View></View>
           <TextInput
             multiline={true}
             numberOfLines={4}
@@ -103,16 +121,18 @@ export default function Comments() {
             onChangeText={(text) => setPost(text)}
           />
           {/* Posting your comment or feedback using this button! */}
+
           <Button
             style={styles.postbutt}
             mode="text"
             uppercase={false}
             onPress={() => handlePost()}
           >
-            <Text>post</Text>
+            <Text style={styles.postitxt}>post</Text>
           </Button>
+          
         </View>
-      </ScrollView>
+      {/* </ScrollView> */}
     </View>
   );
 }
@@ -128,9 +148,11 @@ const styles = StyleSheet.create({
   tasksWrapper: {
     paddingTop: 20,
     paddingHorizontal: 20,
+    backgroundColor: "#e6e6e6",
   },
   headbar: {
-    backgroundColor: "#d2691e", //Main backgroundCoolor: `#d2691e` of our App
+    backgroundColor: "#ecf4fa", //Main backgroundCoolor: `#d2691e` of our App
+
   },
   sectionTitle: {
     fontSize: 24,
@@ -154,9 +176,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     backgroundColor: "#FFF",
     borderRadius: 8,
-    borderColor: "#d2691e",
+    borderColor: "lightblue",
+    // height: height_ * 0.09,
+    width: width_,
+    height: height_ * 0.09,
     borderWidth: 1,
-    width: 250,
+    textAlign: "center",
+    // left: width_ * 0.01,
+    marginTop: 10,
   },
   addWrapper: {
     width: 60,
@@ -172,12 +199,33 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     marginTop: 10,
+    // backgroundColor: "lightblue",
+    borderWidth: 1,
+    borderRadius: 10,
   },
   button: {
     margin: 20,
   },
   postbutt: {
     marginRight: 20,
+  },
+  //fix the button to the bottom of the page
+  footer: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 10,
+    height: height_ * 0.15,
+    width: width_,
+    backgroundColor: "#ecf4fa",
+    alignContent: "center",
+  },
+  postitxt: {
+    fontSize: 22,
+    // fontWeight: "bold",
+    color: "black",
+    marginBottom: 10,
   },
 });
 
