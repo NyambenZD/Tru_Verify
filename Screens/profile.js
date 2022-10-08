@@ -44,6 +44,7 @@ export default function DetailsScreen({ navigation, route }) {
 
   return (
     <SafeAreaView style={styles.container}>
+      <ScrollView>
     <View style={styles.veiw}>
       
      
@@ -60,6 +61,8 @@ export default function DetailsScreen({ navigation, route }) {
         value={contractor?.occupation}
         placeholder="occupation"
         style={styles.textBoxes}
+        editable={false}
+        keyboardType="none"
       />
       <TextInput
         value={contractor?.employer}
@@ -80,6 +83,7 @@ export default function DetailsScreen({ navigation, route }) {
 
     
     </View>
+    </ScrollView>
     </SafeAreaView>
   );
 }
